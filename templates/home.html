@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {%load static%}
+    <title>HomePage</title>
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800 font-poppins">
+    <header class="bg-white shadow-md py-4 px-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-xl font-bold">Welcome {{name}}</h1>
+
+        <div class="flex items-center gap-4">
+          <a href="#" class="text-sm font-medium">Profile</a>
+          <a href="{% url 'login'%}" class="text-sm font-medium">Logout</a>
+        </div>
+      </div>
+    </header>
+    <main class="p-8">
+      <div class="grid grid-cols-3 gap-4">
+        <div class="bg-white shadow-md rounded-md p-4">
+          <img
+            src="{%static 'overview.webp'%}"
+            alt="Image 1"
+            class="w-full h-48 object-cover rounded-md"
+          />
+          <!-- <a href=""
+            ><h3 class="text-lg font-medium mt-4 text-center">
+              Elections Overview
+            </h3>
+          </a> -->
+          <a
+            href="{% url 'elections_overview' %}?user_id={{ user.id }}&name={{ user.username }}"
+          >
+            <h3 class="text-lg font-medium mt-4 text-center">
+              Elections Overview
+            </h3>
+          </a>
+        </div>
+        <div class="bg-white shadow-md rounded-md p-4">
+          <img
+            src="{%static 'guidelines.jpg' %}"
+            alt="Image 2"
+            class="w-full h-48 object-cover rounded-md"
+          />
+          <!-- here i changed -->
+          <a
+            href="{% url 'elections_guidelines' %}?user_id={{ user.id }}&name={{ user.username }}"
+            ><h3 class="text-lg font-medium mt-4 text-center">
+              Elections Guidelines
+            </h3></a
+          >
+        </div>
+        <div class="bg-white shadow-md rounded-md p-4">
+          <img
+            src="{% static 'feedback.webp' %}"
+            alt="Image 3"
+            class="w-full h-48 object-cover rounded-md"
+          />
+          <a href="">
+            <h3 class="text-lg font-medium mt-4 text-center">
+              Support and Assistance
+            </h3>
+          </a>
+        </div>
+        <div class="bg-white shadow-md rounded-md p-4">
+          <img
+            src="{%static 'canddetails.jpg'%}"
+            alt="Image 4"
+            class="w-full h-48 object-cover rounded-md"
+          />
+          <a
+            href="{% url 'candidatedetails' %}?user_id={{ user.id }}&name={{ user.username }}"
+          >
+            <h3 class="text-lg font-medium mt-4 text-center">
+              Candidate Details
+            </h3>
+          </a>
+        </div>
+        <div class="bg-white shadow-md rounded-md p-4">
+          <img
+            src="{%static 'booth.jpg'%}"
+            alt="Image 5"
+            class="w-full h-48 object-cover rounded-md"
+          />
+          <a href="{% url 'PollingBooth' %}?user_id={{ user.id }}&name={{ user.username }}">
+            <h3 class="text-lg font-medium mt-4 text-center">Vooting Booth</h3>
+          </a>
+        </div>
+        <div class="bg-white shadow-md rounded-md p-4">
+          <img
+            src="{%static 'results.jpg'%}"
+            alt="Image 6"
+            class="w-full h-48 object-cover rounded-md"
+          />
+          <a href="{% url 'ResultsPage' %}?user_id={{ user.id }}&name={{ user.username }}">
+            <h3 class="text-lg font-medium mt-4 text-center">Check Results</h3>
+          </a>
+        </div>
+      </div>
+    </main>
+    <hr />
+    <footer>
+      <p style="text-align: center; font-size: 22px;">
+        @copyrights 2024 made by Shiva Krishna Beeraboina
+      </p>
+    </footer>
+  </body>
+</html>

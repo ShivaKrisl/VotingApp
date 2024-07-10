@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Candidates List</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+      .headingg {
+        font-size: 22px;
+        text-align: center;
+        margin-top: 2%;
+        font-weight: bolder;
+      }
+      table {
+        margin-top: 2%;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left; 
+        background-color: #f2f2f2; 
+        font-size: 20px;
+      }
+
+      td {
+        text-align: center;
+        border: 1px solid #dddddd; 
+        padding: 8px; 
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2; 
+      }
+
+      img {
+        max-width: 100px; 
+        max-height: 100px; 
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bg-white shadow-md py-4 px-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-xl font-bold">Welcome {{name}}</h1>
+        <div class="flex items-center gap-4">
+          <!-- <a href="#" class="text-sm font-medium">Profile</a> -->
+          <a href="{% url 'login'%}" class="text-sm font-medium">Logout</a>
+        </div>
+      </div>
+    </header>
+    <h1 class="headingg">List of Candidates</h1>
+    
+    {% if candidates %} {% if candidates.0.start_time <= current_time and candidates.0.end_time > current_time %}
+    
+    <table>
+      <tr>
+        <th>Candidate Name</th>
+        <th>Candidate Age</th>
+        <th>Candidate Gender</th>
+        <th>Candidate Image</th>
+        <th>Party Name</th>
+        <th>Party Symbol</th>
+      </tr>
+      {% for c in candidates %}
+      <tr>
+        <td>{{ c.name }}</td>
+        <td>{{ c.age }}</td>
+        <td>{{ c.gender }}</td>
+        <td><img src="{{ c.photo.url }}" alt="{{ c.name }} image" /></td>
+        <td>{{ c.party_name }}</td>
+        <td>
+          <img src="{{ c.party_symbol.url }}" alt="{{ c.party_name }} image" />
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    
+    {% else %}
+    <h1 class="headingg">
+      Elections Campaign has not yet Completed. Please visit us after Sometime!!
+    </h1>
+    {% endif %} {% else %}
+    <h1 class="headingg">No candidates available.</h1>
+    {% endif %}
+  </body>
+</html>

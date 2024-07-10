@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Candidates</title>
+    {%load static%}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+      .containered {
+        width: 400px;
+        margin-left: 35%;
+        text-align: center;
+        margin-top: 5%;
+        border: 2px solid gray;
+        padding: 12px 12px;
+      }
+      .containered h1 {
+        font-size: 40px;
+      }
+      .containered input {
+        padding: 5px 7px;
+        margin-top: 4%;
+        border-radius: 12px;
+        width: 70%;
+      }
+      .btn1 {
+        color: white;
+        background-color: tomato;
+        padding: 5px 7px;
+        border: 2px solid tomato;
+        border-radius: 12px;
+      }
+      .btn2 {
+        color: white;
+        background-color: teal;
+        padding: 5px 7px;
+        border: 2px solid teal;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body class="bg-blue-200 text-gray-800 font-poppins">
+    <header class="bg-blue-900 shadow-md py-4 px-6">
+      <div class="container flex justify-between items-center">
+        <div class="flex items-center">
+          <h1 class="text-xl font-bold mr-4">Welcome {{name}}</h1>
+        </div>
+      </div>
+    </header>
+    <!-- <h1>{{name}}</h1> -->
+    <div class="containered">
+      <h1>Delete Candidate</h1>
+      <hr />
+      <form
+        id="deleteCandidateForm"
+        method="POST"
+        action="{% url 'Candidates:fetch_candidate_details' %}"
+      >
+        <!-- <label for="candidateID">Candidate ID:</label> -->
+        {% csrf_token %}
+        <input
+          type="text"
+          id="candidateID"
+          name="candidateID"
+          placeholder="Candidate ID"
+        /><br />
+        <!-- <label for="name">Name:</label> -->
+        <input
+          type="text"
+          id="name"
+          name="candidatename"
+          placeholder="Candidate Name"
+        /><br /><br />
+        <input type="hidden" name="username" value="{{ name }}" />
+        <input type="hidden" name="user_id" value="{{ user_id }}" />
+        <input type="submit" class="btn1" value="Candidate Details" />
+        <!-- <button type="button" class="btn2">Delete Candidate</button> -->
+      </form>
+    </div>
+  </body>
+</html>

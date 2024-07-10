@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EC-Dashboard</title>
+    {%load static%}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+    </style>
+  </head>
+  <body class="bg-blue-200 text-gray-800 font-poppins">
+    <header class="bg-blue-900 shadow-md py-4 px-6">
+      <div class="container flex justify-between items-center">
+        <div class="flex items-center">
+          <h1 class="text-xl font-bold mr-4">Welcome {{name}}</h1>
+        </div>
+      </div>
+    </header>
+    <main class="container mx-auto py-10">
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <img
+            src="{% static 'addcands.jpg' %}"
+            alt="Add Candidate"
+            class="w-full h-180 object-cover rounded-lg"
+          />
+          <hr />
+          <div class="mt-4 text-center">
+            <a
+              href="{% url 'Candidates:addCandidates' %}?user_id={{ user.id }}&name={{ user.username }}"
+              ><h3 class="text-lg font-bold">Add Candidate</h3></a
+            >
+          </div>
+        </div>
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <img
+            src="{% static 'delcands.jpg' %}"
+            alt="Image of a product"
+            class="w-full h-180 object-cover rounded-lg"
+          />
+          <hr />
+          <div class="mt-4 text-center">
+            <h2 class="text-lg font-bold">
+              <a
+                href="{% url 'Candidates:deleteCandidates' %}?user_id={{ user.id }}&name={{ user.username }}"
+                >Remove Candidate</a
+              >
+            </h2>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-blue-900 text-white py-6 px-4">
+      <div class="container">
+        <p class="text-center">
+          Copyrights@2024 made by shiva krishna Beeraboina
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

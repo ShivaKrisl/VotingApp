@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Candidate</title>
+    {% load static %}
+    <style>
+      /* Style for the table */
+      table {
+        margin-top: 12%;
+        border-collapse: collapse; /* Collapse table borders */
+        width: 100%; /* Make table fill its container */
+      }
+
+      /* Style for table header cells */
+      th {
+        border: 1px solid #dddddd; /* Add borders to header cells */
+        padding: 8px; /* Add padding to header cells */
+        text-align: left; /* Align text to the left */
+        background-color: #f2f2f2; /* Add background color */
+        font-size: 20px;
+      }
+
+      /* Style for table data cells */
+      td {
+        text-align: center;
+        border: 1px solid #dddddd; /* Add borders to data cells */
+        padding: 8px; /* Add padding to data cells */
+      }
+
+      /* Style for alternating rows */
+      tr:nth-child(even) {
+        background-color: #f2f2f2; /* Add background color to even rows */
+      }
+
+      /* Style for images inside table cells */
+      img {
+        max-width: 100px; /* Limit image width */
+        max-height: 100px; /* Limit image height */
+      }
+      input[type="submit"] {
+        text-align: center;
+        padding: 12px 15px;
+        margin-left: 45%;
+        margin-top: 3%;
+        color: white;
+        font-size: 20px;
+        border-radius: 12px;
+        background-color: tomato;
+        border: 2px solid tomato;
+      }
+      .messages .success {
+        background-color: green;
+        color: white;
+        padding: 12px 12px;
+        font-size: 18px;
+        text-align: center;
+      }
+
+      .messages .error {
+        background-color: red;
+        color: white;
+        padding: 12px 12px;
+        font-size: 18px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <h1>{{user}}</h1>
+    
+    <h1>{{candidate}}</h1> -->
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li {% if message.tags %} class="{{ message.tags }}" {%endif%}>
+        {{ message }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <table>
+      <tr>
+        <th>Candidate ID</th>
+        <th>candidate Name</th>
+        <th>Candidate Age</th>
+        <th>Candidate Gender</th>
+        <th>Candidate Image</th>
+        <th>Party Name</th>
+        <th>Party Symbol</th>
+      </tr>
+      <tr>
+        <td>{{candidate.candidateID}}</td>
+        <td>{{candidate.name}}</td>
+        <td>{{candidate.age}}</td>
+        <td>{{candidate.gender}}</td>
+        <td><img src="{{candidate.photo.url}}" alt="" /></td>
+        <td>{{candidate.party_name}}</td>
+        <td><img src="{{candidate.party_symbol.url}}" alt="" /></td>
+      </tr>
+    </table>
+
+    <!-- <h1>{{user.id}}</h1> -->
+    <form method="POST" action="{% url 'Candidates:deletion' %}">
+      {% csrf_token %}
+      <input type="hidden" name="username" value="{{ user.username }}" />
+      <input type="hidden" name="user_id" value="{{ user.id }}" />
+      <input
+        type="hidden"
+        name="candidate"
+        value="{{ candidate.candidateID }}"
+      />
+      <input type="submit" value="Delete" />
+    </form>
+  </body>
+</html>

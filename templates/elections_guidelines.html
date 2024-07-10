@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {%load static%}
+    <title>Guidelines</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+    </style>
+  </head>
+  <body class="bg-green-100 text-gray-800 font-poppins">
+    <header class="bg-white shadow-md py-4 px-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-xl font-bold">Welcome {{name}}</h1>
+
+        <div class="flex items-center gap-4">
+          <!-- <a href="#" class="text-sm font-medium">Profile</a> -->
+          <a href="{% url 'login'%}" class="text-sm font-medium">Logout</a>
+        </div>
+      </div>
+    </header>
+    <div
+      class="container mx-auto my-14 px-4 py-8 bg-white-700"
+      style="border: 2px solid grey"
+    >
+      <h1 class="text-3xl font-semibold text-center">
+        MODEL CODE OF CONDUCT FOR THE GUIDANCE OF POLITICAL PARTIES AND
+        CANDIDATES
+      </h1>
+      <div class="flex flex-col gap-4 mt-8">
+        <div class="bg-white rounded-lg p-4">
+          <h2 class="text-xl font-semibold">I. General Conduct</h2>
+          <ul
+            class="mt-2 text-gray-600"
+            style="
+              list-style-type: decimal;
+              margin-left: 32px;
+              text-align: justify;
+            "
+          >
+            <li>
+              No party or candidate shall include in any activity which may
+              aggravate existing differences or create mutual hatred or cause
+              tension between different castes and communities, religious or
+              linguistic.
+            </li>
+            <li>
+              Criticism of other political parties, when made, shall be confined
+              to their policies and programme, past record and work. Parties and
+              Candidates shall refrain from criticism of all aspects of private
+              life, not connected with the public activities of the leaders or
+              workers of other parties. Criticism of other parties or their
+              workers based on unverified allegations or distortion shall be
+              avoided.
+            </li>
+            <li>
+              There shall be no appeal to caste or communal feelings for
+              securing votes. Mosques, Churches, Temples or other places of
+              worship shall not be used as forum for election propaganda.
+            </li>
+            <li>
+              All parties and candidates shall avoid scrupulously all activities
+              which are “corrupt practices” and offences under the election law,
+              such as bribing of voters, intimidation of voters, impersonation
+              of voters, canvassing within 100 meters of polling stations,
+              holding public meetings during the period of 48 hours ending with
+              the hour fixed for the close of the poll, and the transport and
+              conveyance of voters to and from polling station.
+            </li>
+            <li>
+              The right of every individual for peaceful and undisturbed
+              home-life shall be respected, however much the political parties
+              or candidates may resent his political opinions or activities.
+              Organizing demonstrations or picketing before the houses of
+              individuals by way of protesting against their opinions or
+              activities shall not be resorted to under any circumstances.
+            </li>
+            <li>
+              No political party or candidate shall permit its or his followers
+              to make use of any individual's land, building, compound wall
+              etc., without his permission for erecting flag-staffs, suspending
+              banners, pasting notices, writing slogans etc.
+            </li>
+            <li>
+              Political parties and candidates shall ensure that their
+              supporters do not create obstructions in or break up meetings and
+              processions organized by other parties. Workers or sympathisers of
+              one political party shall not create disturbances at public
+              meetings organized by another political party by putting questions
+              orally or in writing or by distributing leaflets of their own
+              party. Processions shall not be taken out by one party along
+              places at which meetings are held by another party. Posters issued
+              by one party shall not be removed by workers of another party.
+            </li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-lg p-4">
+          <h2 class="text-xl font-semibold">II. Meetings</h2>
+          <ul
+            class="mt-2 text-gray-600"
+            style="
+              list-style-type: decimal;
+              margin-left: 32px;
+              text-align: justify;
+            "
+          >
+            <li>
+              The party or candidate shall inform the local police authorities
+              of the venue and time any proposed meeting Well in time so as to
+              enable the police to make necessary arrangements for controlling
+              traffic and maintaining peace and order.
+            </li>
+            <li>
+              A Party or candidate shall ascertain in advance if there is any
+              restrictive or prohibitory order in force in the place proposed
+              for the meeting if such orders exist, they shall be followed
+              strictly. If any exemption is required from such orders, it shall
+              be applied for and obtained well in time.
+            </li>
+            <li>
+              There shall be no appeal to caste or communal feelings for
+              securing votes. Mosques, Churches, Temples or other places of
+              worship shall not be used as forum for election propaganda.
+            </li>
+            <li>
+              If permission or license is to be obtained for the use of
+              loudspeakers or any other facility in connection with any proposed
+              meeting, the party or candidate shall apply to the authority
+              concerned well in advance and obtain such permission or license.
+            </li>
+            <li>
+              Organizers of a meeting shall invariably seek the assistance of
+              the police on duty for dealing with persons disturbing a meeting
+              or otherwise attempting to create disorder. Organizers themselves
+              shall not take action against such persons.
+            </li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-lg p-4">
+          <h2 class="text-xl font-semibold">III. Procession</h2>
+          <ul
+            class="mt-2 text-gray-600"
+            style="
+              list-style-type: decimal;
+              margin-left: 32px;
+              text-align: justify;
+            "
+          >
+            <li>
+              A Party or candidate organizing a procession shall decide before
+              hand the time and place of the starting of the procession, the
+              route to be followed and the time and place at which the
+              procession will terminate. There shall ordinary be no deviation
+              from the programme.
+            </li>
+            <li>
+              The organizers shall give advance intimation to the local police
+              authorities of the programme so as to enable the letter to make
+              necessary arrangement.
+            </li>
+            <li>
+              The organizers shall ascertain if any restrictive orders are in
+              force in the localities through which the procession has to pass,
+              and shall comply with the restrictions unless exempted specially
+              by the competent authority. Any traffic regulations or
+              restrictions shall also be carefully adhered to.
+            </li>
+            <li>
+              The organizers shall take steps in advance to arrange for passage
+              of the procession so that there is no block or hindrance to
+              traffic. If the procession is very long, it shall be organized in
+              segments of suitable lengths, so that at convenient intervals,
+              especially at points where the procession has to pass road
+              junctions, the passage of held up traffic could be allowed by
+              stages thus avoiding heavy traffic congestion.
+            </li>
+            <li>
+              Processions shall be so regulated as to keep as much to the right
+              of the road as possible and the direction and advice of the police
+              on duty shall be strictly complied with.
+            </li>
+            <li>
+              If two or more political parties or candidates propose to take
+              processions over the same route or parts thereof at about the same
+              time, the organizers shall establish contact well in advance and
+              decide upon the measures to be taken to see that the processions
+              do not clash or cause hindrance to traffic. The assistance of the
+              local police shall be availed of for arriving at a satisfactory
+              arrangement. For this purpose the parties shall contact the police
+              at the earliest opportunity.
+            </li>
+            <li>
+              The political parties or candidates shall exercise control to the
+              maximum extent possible in the matter of processionists carrying
+              articles which may be put to misuse by undesirable elements
+              especially in moments of excitement.
+            </li>
+            <li>
+              The carrying of effigies purporting to represent member of other
+              political parties or their leaders, burning such effigies in
+              public and such other forms demonstration shall not be
+              countenanced by any political party or candidate.
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg p-4">
+          <h2 class="text-xl font-semibold">IV. Polling Day</h2>
+          <h6>All Political parties and candidates shall –</h6>
+          <ol
+            class="mt-2 text-gray-600"
+            style="
+              list-style-type: decimal;
+              margin-left: 32px;
+              text-align: justify;
+            "
+          >
+            <li>
+              co-operate with the officers on election duty to ensure peaceful
+              and orderly polling and complete freedom to the voters to exercise
+              their franchise without being subjected to any annoyance or
+              obstruction.
+            </li>
+            <li>
+              supply to their authorized workers suitable badges or identity
+              cards.
+            </li>
+            <li>
+              agree that the identity slip supplied by them to voters hall be on
+              plain (white) paper and shall not contain any symbol, name of the
+              candidate or the name of the party;
+            </li>
+            <li>
+              refrain from serving or distributing liquor on polling day and
+              during the forty eight hours preceding it.
+            </li>
+            <li>
+              not allow unnecessary crowd to be collected near the camps set up
+              by the political parties and candidates near the polling booths so
+              as to avoid Confrontation and tension among workers and
+              sympathizers of the parties and the candidate.
+            </li>
+            <li>
+              ensure that the candidate’s camps shall be simple .They shall not
+              display any posters, flags, symbols or any other propaganda
+              material. No eatable shall be served or crowd allowed at the camps
+              and
+            </li>
+            <li>
+              co-operate with the authorities in complying with the restrictions
+              to be imposed on the plying of vehicles on the polling day and
+              obtain permits for them which should be displayed prominently on
+              those vehicles.
+            </li>
+          </ol>
+        </div>
+
+        <div class="bg-white rounded-lg p-4">
+          <h2 class="text-xl font-semibold">V. Polling Booth</h2>
+          <ol
+            class="mt-2 text-gray-600"
+            style="
+              list-style-type: decimal;
+              margin-left: 32px;
+              text-align: justify;
+            "
+          >
+            <li>
+              The Election Commission is appointing Observers. If the candidates
+              or their agents have any specific complaint or problem regarding
+              the conduct of elections they may bring the same to the notice of
+              the Observer.
+            </li>
+          </ol>
+        </div>
+        <!--  -->
+        <div class="bg-white rounded-lg p-4">
+          <h2 class="text-xl font-semibold">VII. Party in Power</h2>
+          <p>
+            The party in power whether at the Centre or in the State or States
+            concerned, shall ensure that no cause is given for any complaint
+            that it has used its official position for the purposes of its
+            election campaign and in particular –
+          </p>
+          <ol
+            class="mt-2 text-gray-600"
+            style="
+              list-style-type: decimal;
+              margin-left: 32px;
+              text-align: justify;
+            "
+          >
+            <li>
+              (a) The Ministers shall not combine their official visit with el
+              ectioneering work and shall not also make use of official
+              machinery or personnel during the electioneering work.<br />(b)
+              Government transport including official air-crafts, vehicles,
+              machinery and personnel shall not be used for furtherance of the
+              interest of the party in power;
+            </li>
+            <li>
+              Public places such as maidens etc., for holding election meetings,
+              and use of helipads for air-flights in connection with elections
+              shall not be monopolized by itself. Other parties and candidates
+              shall be allowed the use of such places and facilities on the same
+              terms and conditions on which they are used by the party in power;
+            </li>
+            <li>
+              Rest houses, dak bungalows or other Government accommodation shall
+              not be monopolized by the party in power or its candidates and
+              such accommodation shall be allowed to be used by other parties
+              and candidates in a fair manner but no party or candidate shall
+              use or be allowed to use such accommodation (including premises
+              appertaining thereto) as a campaign office or for holding any
+              public meeting for the purposes of election propaganda;
+            </li>
+            <li>
+              Issue of advertisement at the cost of public exchequer in the
+              newspapers and other media and the misuse of official mass media
+              during the election period for partisan coverage of political news
+              and publicity regarding achievements with a view to furthering the
+              prospects of the party in power shall be scrupulously avoided.
+            </li>
+            <li>
+              Ministers and other authorities shall not sanction grants/payments
+              out of discretionary funds from the time elections are announced
+              by the Commission; and
+            </li>
+            <li>
+              From the time elections are announced by Commission, Ministers and
+              other authorities shall not –<span>&nbsp;</span><br />(a) announce
+              any financial grants in any form or promises thereof; or<br />(b)
+              (except civil servants) lay foundation stones etc. of projects or
+              schemes of any kind; or<br />(c) make any promise of construction
+              of roads, provision of drinking water facilities etc.; or<br />(d)
+              make any ad-hoc appointments in Government, Public Undertakings
+              etc. which may have the effect of influencing the voters in favor
+              of the party in power.<br /><strong>Note :</strong
+              ><span>&nbsp;</span>The Commission shall announce the date of any
+              election which shall be a date ordinarily not more than three
+              weeks prior to the date on which the notification is likely to be
+              issued in respect of such elections.
+            </li>
+            <li>
+              Ministers of Central or State Government shall not enter any
+              polling station or place of counting except in their capacity as a
+              candidate or voter or authorized agent.
+            </li>
+          </ol>
+        </div>
+        <!--  -->
+        <div class="bg-white rounded-lg p-4">
+          <h2 class="text-xl font-semibold">
+            VIII. Guidelines on Election Manifestos
+          </h2>
+          <p>
+            The party in power whether at the Centre or in the State or States
+            concerned, shall ensure that no cause is given for any complaint
+            that it has used its official position for the purposes of its
+            election campaign and in particular –
+          </p>
+          <ol
+            class="mt-2 text-gray-600"
+            style="
+              list-style-type: decimal;
+              margin-left: 32px;
+              text-align: justify;
+            "
+          >
+            <li>
+              The Supreme Court in its judgment dated 5th July 2013 in SLP(C)
+              No. 21455 of 2008 ( S. Subramaniam Balaji Vs Govt. of Tamil Nadu
+              and Others) has directed the Election Commission to frame
+              guidelines with regard to the contents of election manifestos in
+              consultation with all the recognized political parties. The
+              guiding principles which will lead to framing of such guidelines
+              are quoted below from the judgment:-<br /><br /><strong
+                >(i)</strong
+              ><span>&nbsp;</span>“Although, the law is obvious that the
+              promises in the election manifesto cannot be construed as ‘corrupt
+              practice’ under Section 123 of RP Act, the reality cannot be ruled
+              out that distribution of freebies of any kind, undoubtedly,
+              influences all people. It shakes the root of free and fair
+              elections to a large degree”.<br /><br /><strong
+                >(ii)<span>&nbsp;</span></strong
+              >“The Election Commission, in order to ensure level playing field
+              between the contesting parties and candidates in elections and
+              also in order to see that the purity of the election process does
+              not get vitiated, as in past been issuing instructions under the
+              Model Code of Conduct. The fountainhead of the powers under which
+              the Commission issues these orders is Article 324 of the
+              Constitution which mandates the Commission to hold free and fair
+              elections.”<br /><br /><strong>(iii)<span>&nbsp;</span></strong
+              >“We are mindful of the fact that generally political parties
+              release their election manifesto before the announcement of
+              election date, in that scenario, strictly speaking, the Election
+              Commission will not have the authority to regulate any act which
+              is done before the announcement of the date. Nevertheless, an
+              exception can be made in this regard as the purpose of election
+              manifesto is directly associated with the election process”.<br />&nbsp;
+            </li>
+            <li>
+              Upon receiving the above directions of the Hon’ble Supreme Court,
+              the Election Commission held a meeting with the recognized
+              National and State Political Parties for consultation with them in
+              the matter and took note of their conflicting views in the
+              matter.<br /><br />During consultations, while some political
+              parties supported the issuance of such guidelines, others were of
+              the view that it is their right and duty towards voters to make
+              such offers and promises in manifestos in a healthy democratic
+              polity. While the Commission agrees in principle with the point of
+              view that framing of manifestos is the right of the political
+              parties, it cannot overlook the undesirable impact of some of the
+              promises and offers on the conduct of free and fair elections and
+              maintaining level playing field for all political parties and
+              candidates.<br />&nbsp;
+            </li>
+            <li>
+              The Constitution under Article 324 mandates the Election
+              Commission, to conduct elections inter alia to the Parliament and
+              the State Legislatures. Having due regard to the above directions
+              of the Supreme Court and after consultation with the Political
+              Parties, the Commission, in the interest of free and fair
+              elections , hereby directs that Political Parties and Candidates
+              while releasing election manifestos for any election to the
+              Parliament or State Legislatures, shall adhere to the following
+              guidelines :-<br /><br /><strong>(i)</strong
+              ><span>&nbsp;</span>The election manifesto shall not contain
+              anything repugnant to the ideals and principles enshrined in the
+              Constitution and further that it shall be consistent with the
+              letter and spirit of other provisions of Model Code of Conduct.<br /><br /><strong
+                >(ii)<span>&nbsp;</span></strong
+              >The Directive Principles of State Policy enshrined in the
+              Constitution enjoin upon the State to frame various welfare
+              measures for the citizens and therefore there can be no objection
+              to the promise of such welfare measures in election manifestos.
+              However, political parties should avoid making those promises
+              which are likely to vitiate the purity of the election process or
+              exert undue influence on the voters in exercising their
+              franchise.<br /><br /><strong>(iii)<span>&nbsp;</span></strong
+              >In the interest of transparency, level playing field and
+              credibility of promises, it is expected that manifestos also
+              reflect the rationale for the promises and broadly indicate the
+              ways and means to meet the financial requirements for it. Trust of
+              voters should be sought only on those promises which are possible
+              to be fulfilled.
+            </li>
+            <li>
+              <p>
+                Prohibitory period of Release of Manifesto during elections(s)
+              </p>
+              <p>
+                <strong>(i)</strong> In case of single phase election, manifesto
+                shall not be released during the prohibitory period, as
+                prescribed under Section 126 of the Representation of the People
+                Act, 1951.
+              </p>
+              <p>
+                <strong>(ii)</strong>&nbsp;In case of multi-phase elections,
+                manifesto shall not be released during the prohibitory periods,
+                as prescribed under Section 126 of the Representation of the
+                People Act, 1951, of all the phases of those elections.”
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <footer style="margin-bottom: 22px">
+      <hr />
+      <h3 style="text-align: center">
+        @copyrights 2024 made by Shiva Krishna Beeraboina
+      </h3>
+    </footer>
+  </body>
+</html>
+
+<!-- class="mt-2 text-gray-600"
+            style="
+              list-style-type: decimal;
+              margin-left: 32px;
+              text-align: justify;" -->

@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+      .win-card{
+        width: 400px;
+        margin-left: 35%;
+        padding: 7px 15px;
+        margin-top: 3%;
+        font-size: 18px;
+        border: 2px solid gray;
+        background-color: rgba(87, 77, 227, 0.178);
+        /* box-shadow: 2px 3px 2px 3px gray; */
+      }
+      hr{
+        margin-top: 1%;
+        border: 4px dotted black;
+      }
+      .win-card h1{
+        font-size: 22px;
+        text-align: center;
+        margin-top: 2%;
+        font-weight: bolder;
+       
+      }
+      .win-card img{
+        /* text-align: center; */
+        margin-top: 5px;
+        margin-left: 19%;
+        max-width: 150px;
+        max-height: 150px;
+      }
+      .headingg {
+        font-size: 22px;
+        text-align: center;
+        margin-top: 2%;
+        font-weight: bolder;
+      }
+      table {
+        margin-top: 2%;
+        border-collapse: collapse; /* Collapse table borders */
+        width: 100%; /* Make table fill its container */
+      }
+
+      /* Style for table header cells */
+      th {
+        border: 1px solid #dddddd; /* Add borders to header cells */
+        padding: 8px; /* Add padding to header cells */
+        text-align: left; /* Align text to the left */
+        background-color: #f2f2f2; /* Add background color */
+        font-size: 20px;
+      }
+
+      /* Style for table data cells */
+      td {
+        text-align: center;
+        border: 1px solid #dddddd; /* Add borders to data cells */
+        padding: 8px; /* Add padding to data cells */
+        background-color: #f2f2f2;
+      }
+
+      /* Style for alternating rows */
+      tr:nth-child(even) {
+        background-color: #f2f2f2; /* Add background color to even rows */
+      }
+
+      /* Style for images inside table cells */
+      img {
+        max-width: 100px; /* Limit image width */
+        max-height: 100px; /* Limit image height */
+      }
+      
+      input[type="submit"]{
+        background-color: green;
+        color: white;
+        padding: 7px 15px;
+        cursor: pointer;
+        font-weight: bolder;
+        border: 2px solid green;
+        border-radius: 12px;
+      }
+    </style>
+</head>
+<body style="background-color: aquamarine;">
+    <header class="bg-white shadow-md py-4 px-8">
+        <div class="flex justify-between items-center">
+          <h1 class="text-xl font-bold">Welcome {{name}}</h1>
+          <div class="flex items-center gap-4">
+            <!-- <a href="#" class="text-sm font-medium">Profile</a> -->
+            <a href="{% url 'login'%}" class="text-sm font-medium">Logout</a>
+          </div>
+        </div>
+      </header>
+      {% if candidates %}   
+      {% if candidates.0.end_time < current_time %}
+      <div>
+        <div class="card win-card">
+            <h1>Election Winner</h1>
+            <hr>
+            <img src="{{winner.photo.url}}" class="card-img-top" alt="Winner Photo">
+            <div class="card-body">
+              <p><strong>candidate Name : </strong>{{winner.name}}</p>
+              <p><strong>Number of Votes Polled : </strong>{{winner.votes}}</p>
+              <p><strong>Canidate Party : </strong>{{winner.party_name}}</p>
+              <p><strong>Canidate Party Symbol : </strong><img src="{{winner.party_symbol.url}}" alt="Winner Party Symbol"></p>
+            </div>
+          </div>
+      </div>
+
+      <table>
+        <tr>
+          <th>Candidate Name</th>
+          <th>Candidate Age</th>
+          <th>Candidate Gender</th>
+          <th>Candidate Image</th>
+          <th>Party Name</th>
+          <th>Party Symbol</th>
+          <th>Votes Count</th>
+        </tr>
+        {% for c in candidates %}
+        <tr>
+          <td>{{ c.name }}</td>
+          <td>{{ c.age }}</td>
+          <td>{{ c.gender }}</td>
+          <td><img src="{{ c.photo.url }}" alt="{{ c.name }} image" /></td>
+          <td>{{ c.party_name }}</td>
+          <td>
+            <img src="{{ c.party_symbol.url }}" alt="{{ c.party_name }} image" />
+          </td>
+          <td>{{c.votes}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      
+      {% else %}
+      <h1 class="headingg">
+        Elections Campaign has not yet Completed. Please visit us after Sometime!!
+      </h1>
+      {% endif %} {% else %}
+      <h1 class="headingg">No candidates available.</h1>
+      {% endif %}
+      <footer>
+        <hr />
+        <h3 style="text-align: center">
+          @copyrights 2024 made by Shiva Krishna Beeraboina
+        </h3>
+      </footer>
+</body>
+</html>

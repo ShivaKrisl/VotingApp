@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background-image: url("{% static 'results.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        image-resolution: 2000%;
+      }
+      .FormContainer {
+        width: 600px;
+        text-align: justify;
+        margin-left: 30%;
+        margin-top: 2%;
+        border: 3px solid gray;
+        border-radius: 12px;
+        padding: 12px 17px;
+        /* box-shadow: 3px 5px 3px 5px gray; */
+        font-size: 18px;
+        background-color: lightblue;
+      }
+      h1 {
+        text-align: center;
+      }
+      .successss {
+        padding: 12px 7px;
+        text-align: center;
+        margin-left: 34%;
+        border-radius: 12px;
+        background-color: tomato;
+        color: white;
+        font-weight: bold;
+      }
+      .messages .success {
+        background-color: green;
+        color: white;
+        padding: 12px 12px;
+        font-size: 18px;
+        text-align: center;
+      }
+
+      .messages .error {
+        background-color: red;
+        color: white;
+        padding: 12px 12px;
+        font-size: 18px;
+        text-align: center;
+      }
+    </style>
+    <title>Add Candidates</title>
+  </head>
+  <body>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li {% if message.tags %} class="{{ message.tags }}" {%endif%}>
+        {{ message }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="FormContainer">
+      <h1>Add Candidate</h1>
+      <hr />
+      <form
+        class="row g-3"
+        enctype="multipart/form-data"
+        method="POST"
+        action="{% url 'Candidates:AddCandidate' %}"
+      >
+        {% csrf_token %}
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Candidate ID</label>
+          <input
+            type="text"
+            name="cid"
+            class="form-control"
+            id="inputEmail4"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Candidate Name</label>
+          <input
+            type="text"
+            name="cname"
+            class="form-control"
+            id="inputPassword4"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Candidate Age</label>
+          <input
+            type="number"
+            name="age"
+            class="form-control"
+            min="26"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label"
+            >Candidate Education</label
+          >
+          <input type="text" name="education" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+          <label for="inputState" class="form-label">Gender</label>
+          <select id="inputState" name="gender" class="form-select" required>
+            <option value="Male" selected>Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputZip" class="form-label">Party Name</label>
+          <input
+            type="text"
+            name="partyname"
+            class="form-control"
+            id="inputZip"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputZip" class="form-label">Candidate Image</label>
+          <input
+            type="file"
+            name="candimage"
+            class="form-control"
+            accept="image/*"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputZip" class="form-label">Party Symbol</label>
+          <input
+            type="file"
+            name="partyimage"
+            class="form-control"
+            accept="image/*"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputZip" class="form-label">Start Time</label>
+          <input
+            type="datetime-local"
+            name="starttime"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputZip" class="form-label">End Time</label>
+          <input
+            type="datetime-local"
+            name="endtime"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputZip" class="form-label">Vote Count</label>
+          <input
+            type="number"
+            name="votecount"
+            class="form-control"
+            value="0"
+            readonly
+          />
+        </div>
+        <input type="hidden" name="username" value="{{ name }}" />
+        <input type="hidden" name="user_id" value="{{ user_id }}" />
+        <div class="col-12">
+          <input type="submit" class="successss" value="Add Candidate" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

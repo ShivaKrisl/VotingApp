@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Elections</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+      .headingg {
+        font-size: 22px;
+        text-align: center;
+        margin-top: 2%;
+        font-weight: bolder;
+      }
+      table {
+        margin-top: 2%;
+        border-collapse: collapse; /* Collapse table borders */
+        width: 100%; /* Make table fill its container */
+      }
+
+      /* Style for table header cells */
+      th {
+        border: 1px solid #dddddd; /* Add borders to header cells */
+        padding: 8px; /* Add padding to header cells */
+        text-align: left; /* Align text to the left */
+        background-color: #f2f2f2; /* Add background color */
+        font-size: 20px;
+      }
+
+      /* Style for table data cells */
+      td {
+        text-align: center;
+        border: 1px solid #dddddd; /* Add borders to data cells */
+        padding: 8px; /* Add padding to data cells */
+      }
+
+      /* Style for alternating rows */
+      tr:nth-child(even) {
+        background-color: #f2f2f2; /* Add background color to even rows */
+      }
+
+      /* Style for images inside table cells */
+      img {
+        max-width: 100px; /* Limit image width */
+        max-height: 100px; /* Limit image height */
+      }
+      input[type="submit"]{
+        background-color: green;
+        color: white;
+        padding: 7px 15px;
+        cursor: pointer;
+        font-weight: bolder;
+        border: 2px solid green;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bg-white shadow-md py-4 px-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-xl font-bold">Welcome {{name}}</h1>
+        <div class="flex items-center gap-4">
+          <!-- <a href="#" class="text-sm font-medium">Profile</a> -->
+          <a href="{% url 'login'%}" class="text-sm font-medium">Logout</a>
+        </div>
+      </div>
+    </header>
+    <h1 class="headingg">List of Candidates</h1>
+    {% if candidates %} {% if candidates.0.start_time <= current_time and candidates.0.end_time > current_time %}
+    {% if user.has_voted == False %}
+    <form>
+        {% csrf_token %}
+        <table>
+            <tr>
+              <th>Candidate Name</th>
+              <th>Candidate Age</th>
+              <th>Candidate Gender</th>
+              <th>Candidate Image</th>
+              <th>Party Name</th>
+              <th>Party Symbol</th>
+              <th>Vote</th>
+            </tr>
+            {% for c in candidates %}
+            <tr>
+              <td>{{ c.name }}</td>
+              <td>{{ c.age }}</td>
+              <td>{{ c.gender }}</td>
+              <td><img src="{{ c.photo.url }}" alt="{{ c.name }} image" /></td>
+              <td>{{ c.party_name }}</td>
+              <td>
+                <img src="{{ c.party_symbol.url }}" alt="{{ c.party_name }} image" />
+              </td>
+              <td><input type="submit" value="VOTE" data-candidate-info="{&quot;id&quot;: &quot;{{ c.candidateID }}&quot;, &quot;user_id&quot;: &quot;{{ user.id }}&quot;, &quot;name&quot;: &quot;{{ name }}&quot;}"  onclick="vote(this)"/></td>
+            </tr>
+            {% endfor %}
+          </table>
+          <input type="hidden" name="name" value="{{name}}">
+          <input type="hidden" name="user_id" value="{{user.id}}">
+    </form>
+    {% else %}
+    <h1 class="headingg">
+      Your vote has already been recorded!!
+    </h1>
+    {% endif %}
+    {% else %}
+    <h1 class="headingg">
+      Elections Campaign has not yet Completed. Please visit us after Sometime!!
+    </h1>
+    {% endif %} {% else %}
+    <h1 class="headingg">No candidates available.</h1>
+    {% endif %}
+    <script>
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Check if the cookie contains the specified name
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+      function vote(button) {
+    // Send AJAX request to cast the vote
+    event.preventDefault();
+    // const candidateId = button.dataset.candidateId;
+    var candidateInfo = JSON.parse(button.dataset.candidateInfo);
+    console.log(candidateInfo)
+    var candidateId = candidateInfo.id;
+    var username = candidateInfo.name;
+    console.log(username);
+    var user_id = candidateInfo.user_id;
+
+    // Get the CSRF token from the cookie
+    const csrftoken = getCookie('csrftoken');
+
+    // Set up AJAX request with CSRF token
+    $.ajax({
+        type: 'POST',
+        url: '/countingElections/',
+        headers: {
+            'X-CSRFToken': csrftoken
+        },
+        data: {
+            candidate_id: candidateId,
+            user_id : user_id,
+            name : username
+        },
+        success: function(data) {
+            if (data.success) {
+                alert('Vote successfully cast.');
+                // Optionally update the UI to reflect the new vote count
+            } else {
+                alert('Failed to cast vote. Please try again.');
+            }
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            console.error('Failed to cast vote:', errorThrown);
+            alert('Failed to cast vote. Please try again.');
+        }
+    });
+}
+
+    </script>
+  </body>
+</html>
